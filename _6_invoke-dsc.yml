@@ -13,7 +13,7 @@
       DomainName: SQL.com
       UserName: "test_user"
       Ensure: present
-      Path: "CN=test_user,OU=SQL Service Accounts,DC=SQL,DC=com"
+      Path: "OU=SQL Service Accounts,DC=SQL,DC=com"
       DisplayName:  "Test User"
       GivenName:  "Test"
       Surname: "User"
