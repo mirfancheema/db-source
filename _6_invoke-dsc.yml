@@ -12,7 +12,6 @@
       resource_name:  xADUser
       DomainName: SQL.com
       UserName: "test_user"
-      Password: "P@ssword!"
       Ensure: present
       Path: "OU=SQL Service Accounts,DC=SQL,DC=com"
       DisplayName:  "Test User"
