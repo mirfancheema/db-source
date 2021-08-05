@@ -30,7 +30,8 @@
 
   - name: Looping nested
     debug:
-         msg: "{{ item.dbname[0] }}"
-    loop:
-      "{{ files }}"
+         msg: "{{ item.0.f }}/{{ item.1 }}"
+    with_subelements:
+      - files
+      - dbname
 
