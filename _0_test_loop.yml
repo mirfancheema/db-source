@@ -32,6 +32,6 @@
     debug:
          msg: "{{ item.0.f }}/{{ item.1 }}"
     with_subelements:
-      - myfiles
+      - "{{ myfiles }}"
       - dbname
 
