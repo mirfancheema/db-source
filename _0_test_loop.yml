@@ -28,3 +28,11 @@
     loop:
       "{{ files }}"
 
+  - name: Looping nested
+    debug:
+
+       msg: "{{ item }}"
+
+    loop:
+      "{{ files.dbname }}"
+
