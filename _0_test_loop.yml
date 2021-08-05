@@ -7,14 +7,14 @@
           env: 'Prod', 
           domain: 'domain', 
           ext: 'txt',
-          dbname: { 'db1', 'db2' }
+          dbname: [ 'db1', 'db2' ]
         }
       - { p: 'c:\temp', 
           f: 'loop-test2', 
           env: 'Prod', 
           domain: 'domain', 
           ext: 'txt',
-          dbname: { 'db1', 'db2' }
+          dbname: [ 'db1', 'db2' ]
         }
     i: files.length
      
@@ -30,9 +30,9 @@
 
   - name: Looping nested
     debug:
-         msg: "{{ item.value }}"
+         msg: "{{ item }}"
 
-       loop: "{{ item.dbname | dict2items }}"
+       loop: "{{ item.dbname }}"
 
     loop:
       "{{ files }}"
