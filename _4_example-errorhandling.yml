@@ -1,5 +1,5 @@
 ---
-- hosts: all
+- hosts: "{{ nodes }}"
   tasks:
 
   - name: Copy a single file
