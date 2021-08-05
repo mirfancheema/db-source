@@ -32,7 +32,7 @@
     debug:
          msg: "{{ item.value }}"
 
-       loop: "{{ item.dbname | dict2item }}"
+       loop: "{{ item.dbname | dict2items }}"
 
     loop:
       "{{ files }}"
