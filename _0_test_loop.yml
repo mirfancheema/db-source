@@ -1,0 +1,28 @@
+---
+- hosts: all
+  vars:
+    files:
+      - { p: 'c:\temp', 
+          f: 'loop-test1', 
+          env: 'Prod', 
+          domain: 'domain', 
+          ext: 'txt',
+          dbname: { db1: 'db1', db2: 'db2' }
+        }
+      - { p: 'c:\temp', 
+          f: 'loop-test2', 
+          env: 'Prod', 
+          domain: 'domain', 
+          ext: 'txt',
+          dbname: { db1: 'db1', db2: 'db2' }
+        }
+    i: files.length
+     
+
+  tasks:
+  - name: Looping
+    debug:
+       msg: "{{ item.p }}\\{{ item.f }}-{{ item.env }}-{{ item.domain}}.{{ item.ext }}"
+    loop:
+      "{{ files }}"
+
