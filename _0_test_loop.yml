@@ -7,7 +7,7 @@
           env: 'Prod', 
           domain: 'domain', 
           ext: 'txt',
-          dbname: { db1: 'db1', db2: 'db2' }
+          dbname: { 'db1', 'db2' }
         }
       - { p: 'c:\temp', 
           f: 'loop-test2', 
@@ -22,11 +22,9 @@
   tasks:
   - name: Looping
     debug:
+
        msg: "{{ item.p }}\\{{ item.f }}-{{ item.env }}-{{ item.domain}}.{{ item.ext }}"
-       debug:
-          msg: "{{ item }}"
-       loop: "{{ item.dbname | dict2items}}"
-       
+
     loop:
       "{{ files }}"
 
