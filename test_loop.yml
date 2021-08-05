@@ -1,11 +1,17 @@
 ---
 - hosts: all
+  vars:
+    files:
+      - { name: 'c:\temp\loop-test1.txt' }
+      - { name: 'c:\temp\loop-test2.txt' }
+    i: files.length
+     
+
   tasks:
   - name: Creating an empty file
     win_file:
-      path: "{{ item.name }}"
+      path: "{{ item.value }}"
       state: touch
     loop:
-      - { name: 'c:\temp\loop-test1.txt' }
-      - { name: 'c:\temp\loop-test2.txt' }
+      {{ files }}
 
