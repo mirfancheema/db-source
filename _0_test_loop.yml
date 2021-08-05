@@ -14,7 +14,7 @@
           env: 'Prod', 
           domain: 'domain', 
           ext: 'txt',
-          dbname: { db1: 'db1', db2: 'db2' }
+          dbname: { 'db1', 'db2' }
         }
     i: files.length
      
@@ -24,7 +24,7 @@
     debug:
        msg: "{{ item.p }}\\{{ item.f }}-{{ item.env }}-{{ item.domain}}.{{ item.ext }}"
        debug:
-          msg: "{{ item.value }}"
+          msg: "{{ item }}"
        loop: "{{ item.dbname | dict2items}}"
        
     loop:
