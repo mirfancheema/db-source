@@ -6,6 +6,6 @@
       path: "{{ item }}"
       state: touch
     with_items:
-    - name: "c:\temp\loop-test1.txt"
-    - name: "c:\temp\loop-test2.txt"
+    - name: "c:/temp/loop-test1.txt"
+    - name: "c:/temp/loop-test2.txt"
 
