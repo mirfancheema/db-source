@@ -10,7 +10,7 @@
   tasks:
   - name: Creating an empty file
     win_file:
-      path: "{{ item.value }}"
+      path: "{{ item.name }}"
       state: touch
     loop:
       "{{ files }}"
