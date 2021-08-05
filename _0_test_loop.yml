@@ -23,6 +23,10 @@
   - name: Looping
     debug:
        msg: "{{ item.p }}\\{{ item.f }}-{{ item.env }}-{{ item.domain}}.{{ item.ext }}"
+       debug:
+          msg: "{{ item.value }}"
+       loop: "{{ item.dbname | dict2items}}"
+       
     loop:
       "{{ files }}"
 
