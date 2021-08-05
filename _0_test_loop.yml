@@ -30,7 +30,7 @@
 
   - name: Looping nested
     debug:
-         msg: "{{ item.dbname }}"
+         msg: "{{ item.dbname[0] }}"
     loop:
       "{{ files }}"
 
