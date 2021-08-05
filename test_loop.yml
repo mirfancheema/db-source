@@ -2,8 +2,8 @@
 - hosts: all
   tasks:
   - name: Creating an empty file
-    file:
-      path: "{{ item[0] }}"
+    ansible.windows.win_file:
+      path: "{{ item }}"
       state: touch
     with_items:
       files
