@@ -22,9 +22,9 @@
   tasks:
   - name: Creating an empty file
     win_file:
-      path: "{{ item.p }}\{{ item.f }}.{{ item.ext }}"
-      path: "{{ item.p }}\{{ item.f }}-{{ item.env }}.{{ item.ext }}"
-      path: "{{ item.p }}\{{ item.f }}-{{ item.domain }}.{{ item.ext }}"
+      path: "{{ item.p }}\\{{ item.f }}.{{ item.ext }}"
+      path: "{{ item.p }}\\{{ item.f }}-{{ item.env }}.{{ item.ext }}"
+      path: "{{ item.p }}\\{{ item.f }}-{{ item.domain }}.{{ item.ext }}"
       state: touch
     loop:
       "{{ files }}"
