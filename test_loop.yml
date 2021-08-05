@@ -2,8 +2,16 @@
 - hosts: all
   vars:
     files:
-      - { name: 'c:\temp\loop-test1.txt' }
-      - { name: 'c:\temp\loop-test2.txt' }
+      - { name: 'c:\temp\loop-test1.txt', 
+          env: 'Prod', 
+          domain: 'domain', 
+          dbname: { db1: 'db1', db2: 'db2' }
+        }
+      - { name: 'c:\temp\loop-test2.txt' , 
+          env: 'Prod', 
+          domain: 'domain', 
+          dbname: { db1: 'db1', db2: 'db2' }
+        }
     i: files.length
      
 
