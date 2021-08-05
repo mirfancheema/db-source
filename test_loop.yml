@@ -5,6 +5,7 @@
     win_file:
       path: "{{ item.name }}"
       state: touch
-    with_items:
-      - files
+    loop:
+      - { name: 'c:\temp\loop-test1.txt' }
+      - { name: 'c:\temp\loop-test2.txt' }
 
