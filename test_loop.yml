@@ -2,14 +2,18 @@
 - hosts: all
   vars:
     files:
-      - { name: 'c:\temp\loop-test1.txt', 
+      - { p: 'c:\temp', 
+          f: 'loop-test1', 
           env: 'Prod', 
           domain: 'domain', 
+          ext: 'txt',
           dbname: { db1: 'db1', db2: 'db2' }
         }
-      - { name: 'c:\temp\loop-test2.txt' , 
+      - { p: 'c:\temp', 
+          f: 'loop-test2', 
           env: 'Prod', 
           domain: 'domain', 
+          ext: 'txt',
           dbname: { db1: 'db1', db2: 'db2' }
         }
     i: files.length
@@ -18,7 +22,9 @@
   tasks:
   - name: Creating an empty file
     win_file:
-      path: "{{ item.name }}"
+      path: "{{ item.p }}\{{ item.f }}.{{ item.ext }}"
+      path: "{{ item.p }}\{{ item.f }}-{{ item.env }}.{{ item.ext }}"
+      path: "{{ item.p }}\{{ item.f }}-{{ item.domain }}.{{ item.ext }}"
       state: touch
     loop:
       "{{ files }}"
