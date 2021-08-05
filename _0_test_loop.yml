@@ -1,7 +1,7 @@
 ---
 - hosts: all
   vars:
-    files:
+    myfiles:
       - { p: 'c:\temp', 
           f: 'loop-test1', 
           env: 'Prod', 
@@ -26,12 +26,12 @@
        msg: "{{ item.p }}\\{{ item.f }}-{{ item.env }}-{{ item.domain}}.{{ item.ext }}"
 
     loop:
-      "{{ files }}"
+      "{{ myfiles }}"
 
   - name: Looping nested
     debug:
          msg: "{{ item.0.f }}/{{ item.1 }}"
     with_subelements:
-      - files
+      - myfiles
       - dbname
 
