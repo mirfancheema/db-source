@@ -3,8 +3,8 @@
   tasks:
   - name: Creating an empty file
     file:
-      path: "{{ item.name }}"
+      path: "{{ item[0] }}"
       state: touch
     with_items:
-      file_name
+      files
 
