@@ -1,0 +1,10 @@
+---
+- hosts: all
+  tasks:
+  - name: Creating an empty file
+    file:
+      path: "{{ item.name }}"
+      state: touch
+    with_items:
+      file_name
+
