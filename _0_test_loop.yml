@@ -35,10 +35,10 @@
       - "{{ myfiles }}"
       - dbname
 
-   - name: Show extracted list of keys from a list of dictionaries
-     debug:
+  - name: Show extracted list of keys from a list of dictionaries
+    debug:
        msg: "{{ chains | map('extract', chains_config) | map(attribute='configs') | flatten | map(attribute='type') | flatten }}"
-     vars:
+    vars:
        chains: [1, 2]
        chains_config:
            1:
