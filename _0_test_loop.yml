@@ -35,3 +35,25 @@
       - "{{ myfiles }}"
       - dbname
 
+   - name: Show extracted list of keys from a list of dictionaries
+     ansible.builtin.debug:
+       msg: "{{ chains | map('extract', chains_config) | map(attribute='configs') | flatten | map(attribute='type') | flatten }}"
+     vars:
+       chains: [1, 2]
+       chains_config:
+           1:
+               foo: bar
+               configs:
+                   - type: routed
+                     version: 0.1
+                   - type: bridged
+                     version: 0.2
+           2:
+               foo: baz
+               configs:
+                   - type: routed
+                     version: 1.0
+                   - type: bridged
+                     version: 1.1
+
+
