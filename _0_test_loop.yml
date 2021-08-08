@@ -20,28 +20,29 @@
      
 
   tasks:
-  - name: Looping
+  - name: Setting host facts using complex arguments
     set_fact:
-       dblist: 'test'
+      one_fact: something
+  - name: Looping
     debug:
-       msg: "{{ item.p }}\\{{ item.f }}-{{ item.env }}-{{ item.domain}}.{{ item.ext }}"
+      msg: "{{ item.p }}\\{{ item.f }}-{{ item.env }}-{{ item.domain}}.{{ item.ext }}"
 
     loop:
       "{{ myfiles }}"
 
   - name: Looping nested
     debug:
-         msg: "{{ item.0.f }}/{{ item.1 }}"
+      msg: "{{ item.0.f }}/{{ item.1 }}"
     with_subelements:
       - "{{ myfiles }}"
       - dbname
 
   - name: Show extracted list of keys from a list of dictionaries
     debug:
-       msg: "{{ chains | map('extract', chains_config) | map(attribute='configs') | flatten | map(attribute='type') | flatten }}"
+      msg: "{{ chains | map('extract', chains_config) | map(attribute='configs') | flatten | map(attribute='type') | flatten }}"
     vars:
-       chains: [1, 2]
-       chains_config:
+      chains: [1, 2]
+      chains_config:
            1:
                foo: bar
                configs:
