@@ -21,10 +21,8 @@
 
   tasks:
   - name: Looping
-    set_fact:
-      one_fact: something
     debug:
-      msg: "{{ item.p }}\\{{ item.f }}-{{ item.env }}-{{ item.domain}}.{{ item.ext }}"
+      msg: "{{ item.p }}\\{{ item.f }}-{{ item.env }}-{{ item.domain}}.{{ item.ext }}-{{ dbname | join(',') }}"
 
     loop:
       "{{ myfiles }}"
