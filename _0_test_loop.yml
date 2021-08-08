@@ -22,7 +22,7 @@
   tasks:
   - name: Looping
     debug:
-      msg: "{{ item.p }}\\{{ item.f }}-{{ item.env }}-{{ item.domain}}.{{ item.ext }}-{{ dbname | join(',') }}"
+      msg: "{{ item.p }}\\{{ item.f }}-{{ item.env }}-{{ item.domain}}.{{ item.ext }}-{{ item.dbname | join(',') }}"
 
     loop:
       "{{ myfiles }}"
