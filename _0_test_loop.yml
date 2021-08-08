@@ -22,7 +22,7 @@
   tasks:
   - name: Looping
     set_fact:
-       dblist: "{{ dbname | join(',') }}"
+       dblist: 'test'
     debug:
        msg: "{{ item.p }}\\{{ item.f }}-{{ item.env }}-{{ item.domain}}.{{ item.ext }}"
 
