@@ -20,10 +20,9 @@
      
 
   tasks:
-  - name: Setting host facts using complex arguments
+  - name: Looping
     set_fact:
       one_fact: something
-  - name: Looping
     debug:
       msg: "{{ item.p }}\\{{ item.f }}-{{ item.env }}-{{ item.domain}}.{{ item.ext }}"
 
