@@ -24,7 +24,7 @@
 
   - name: Run a script
     win_shell: "{{ ansible_env.USERPROFILE }}/check-windows-login-exists.ps1 -computer {{ ansible_hostname }} -sqlinstance {{ item.sqlinstance }} -LoginName {{ item.LoginName }} -Domain {{ item.DomainName }}"
-    when inventory_host == "ServerThree"
+    when: inventory_host == "ServerThree"
     loop:
       "{{ login_list }}"
 
