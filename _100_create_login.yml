@@ -16,6 +16,8 @@
         }
 
   tasks:
+  -name: print o
+
   - name: Copy file for login check
     win_copy:
       src: "{{ playbook_dir }}/files/check-windows-login-exists.ps1"
@@ -24,7 +26,7 @@
 
   - name: Run a script
     win_shell: "{{ ansible_env.USERPROFILE }}/check-windows-login-exists.ps1 -computer {{ ansible_hostname }} -sqlinstance {{ item.sqlinstance }} -LoginName {{ item.LoginName }} -Domain {{ item.DomainName }}"
-    when: inventory_host == "ServerThree"
+    when: ansible_hostname == "ServerThree"
     loop:
       "{{ login_list }}"
 
