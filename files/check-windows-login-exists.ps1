@@ -44,29 +44,36 @@ Function CHECK_LOGIN_EXISTS{
                                                $SqlAdapter = New-Object System.Data.SqlClient.SqlDataAdapter
                                                $SqlAdapter.SelectCommand = $SqlCmd
                                                $DataSet = New-Object System.Data.DataSet
-                                                $SqlAdapter.Fill($DataSet) | Out-Null
-                                                $ErrorActionPreference = "Continue"
+                                               $rowcount = $SqlAdapter.Fill($DataSet)
+                                               $ErrorActionPreference = "Continue"
                                 }
                                 Catch{
-                                               Write-Host "Login Creation Failed" -ForegroundColor "Red"
+                                               Write-Error "Login Exist Check Failed" -ErrorAction Continue
+                                               Write-Error $_.Exception.Message -ErrorAction Continue
+                                               return $false
+#                                               Write-Host "Login Creation Failed" -ForegroundColor "Red"
                                 }
                 }
                 Process{
 #                                Write-Host "$query1"
-                                $DataSet.Tables[0]
+#                                $DataSet.Tables[0]
 #                                return $DataSet.Tables[0]
-                                return $true
+                                if ( $rowcount -eq 0 ){
+                                   return $false
+                                } else {
+                                   return $true
+                                }
                 }
                 END{
                                 $SqlConnection.Close()
-                                 Write-Host "END"
+#                                 Write-Host "END"
                 }
 
 }
 
 
   for ($i = 0; $i -lt $LoginName.length; $i++){
-     Write-Host $LoginName[$i]
+#     Write-Host $LoginName[$i]
   $lgin = $LoginName[$i]
   $LoginCheck = CHECK_LOGIN_EXISTS -instance $sqlinstance -login $LoginName[$i] -domainname $Domain
   if ( $LoginCheck )
