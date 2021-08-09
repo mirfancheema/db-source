@@ -1,22 +1,22 @@
 ---
 - hosts: all
-  vars:
-    myfiles:
-      - { p: 'c:\temp', 
-          f: 'loop-test1', 
-          env: 'Prod', 
-          domain: 'domain', 
-          ext: 'txt',
-          dbname: [ 'db1', 'db2' ]
-        }
-      - { p: 'c:\temp', 
-          f: 'loop-test2', 
-          env: 'Prod', 
-          domain: 'domain', 
-          ext: 'txt',
-          dbname: [ 'db1', 'db2' ]
-        }
-    i: files.length
+#  vars:
+#    myfiles:
+#      - { p: 'c:\temp', 
+#          f: 'loop-test1', 
+#          env: 'Prod', 
+#          domain: 'domain', 
+#          ext: 'txt',
+#          dbname: [ 'db1', 'db2' ]
+#        }
+#      - { p: 'c:\temp', 
+#          f: 'loop-test2', 
+#          env: 'Prod', 
+#          domain: 'domain', 
+#          ext: 'txt',
+#          dbname: [ 'db1', 'db2' ]
+#        }
+#    i: files.length
      
 
   tasks:
