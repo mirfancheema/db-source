@@ -72,7 +72,7 @@ Function CREATE_LOGIN_WINDOWS{
 #     Write-Host $LoginName[$i]
   $lgin = $LoginName[$i]
   $LoginCreate = CREATE_LOGIN_WINDOWS -instance $sqlinstance -login $LoginName[$i] -domainname $Domain
-  if ( $LoginCreate )
+  if ( !$LoginCreate )
   {
 #   Write-Error "Create Login $lgin Failed" -ErrorAction Continue
    exit 1
