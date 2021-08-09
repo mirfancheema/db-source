@@ -18,11 +18,22 @@
   tasks:
   - name: Copy file for login check
     win_copy:
+      src: "{{ playbook_dir }}/files/check-windows-login-exists.ps1"
+      dest: "{{ ansible_env.USERPROFILE }}/check-windows-login-exists.ps1"     
+
+  - name: Copy file for login check
+    win_copy:
       src: "{{ playbook_dir }}/files/create-windows-login.ps1"
       dest: "{{ ansible_env.USERPROFILE }}/create-windows-login.ps1"     
 
+  - name: Run Login Exists check script
+    win_shell: "{{ ansible_env.USERPROFILE }}/check-windows-login-exists.ps1 -computer {{ ansible_hostname }} -sqlinstance {{ item.sqlinstance }} -LoginName {{ item.LoginName }} -Domain {{ item.DomainName }}"
+    when: ansible_hostname == "ServerThree"
+    loop:
+      "{{ login_list }}"
 
-  - name: Run a script
+
+  - name: Run Login Create script
     win_shell: "{{ ansible_env.USERPROFILE }}/create-windows-login.ps1 -computer {{ ansible_hostname }} -sqlinstance {{ item.sqlinstance }} -LoginName {{ item.LoginName }} -Domain {{ item.DomainName }}"
     when: ansible_hostname == "ServerThree"
     loop:
