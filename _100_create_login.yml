@@ -19,7 +19,7 @@
   - name: Copy file for login check
     win_copy:
       src: "{{ playbook_dir }}/files/check-windows-login-exists.ps1"
-      dest: "{{ ansible_env.USERPROFILE }}"/check-windows-login-exists.ps1     
+      dest: "{{ ansible_env.USERPROFILE }}/check-windows-login-exists.ps1"     
 
 
   - name: Run a script
