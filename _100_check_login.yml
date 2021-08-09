@@ -1,0 +1,31 @@
+---
+- hosts: all
+  vars:
+    login_list:
+      - { sqlinstance: 'ServerThree', 
+          LoginName: 'winuser1', 
+          DomainName: 'SQL',
+          env: 'Prod', 
+          dbname: [ 'db1', 'db2' ]
+        }
+      - { sqlinstance: 'ServerThree', 
+          LoginName: 'winuser2', 
+          DomainName: 'SQL',
+          env: 'Prod', 
+          dbname: [ 'db1', 'db2' ]
+        }
+
+  tasks:
+  - name: Copy file for login check
+    win_copy:
+      src: "{{ playbook_dir }}/files/check-windows-login-exists.ps1"
+      dest: "{{ ansible_env.USERPROFILE }}/check-windows-login-exists.ps1"     
+
+
+  - name: Run a script
+    win_shell: "{{ ansible_env.USERPROFILE }}/check-windows-login-exists.ps1 -computer {{ ansible_hostname }} -sqlinstance {{ item.sqlinstance }} -LoginName {{ item.LoginName }} -Domain {{ item.DomainName }}"
+    when: ansible_hostname == "ServerThree"
+    loop:
+      "{{ login_list }}"
+
+
