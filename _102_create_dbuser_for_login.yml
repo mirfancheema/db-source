@@ -1,0 +1,30 @@
+---
+- hosts: all
+#  vars:
+#    login_list:
+#      - { sqlinstance: 'ServerThree', 
+#          LoginName: 'winuser1', 
+#          DomainName: 'SQL',
+#          env: 'Prod', 
+#          dbname: [ 'db1', 'db2' ]
+#        }
+#      - { sqlinstance: 'ServerThree', 
+#          LoginName: 'winuser2', 
+#          DomainName: 'SQL',
+#          env: 'Prod', 
+#          dbname: [ 'db1', 'db2' ]
+#        }
+
+  tasks:
+  - name: Copy file for DB user creation
+    win_copy:
+      src: "{{ playbook_dir }}/files/create-dbuser-for-login.ps1"
+      dest: "{{ ansible_env.USERPROFILE }}/create-dbuser-for-login.ps1"
+
+  - name: Run create DB user script
+    win_shell: "{{ ansible_env.USERPROFILE }}/create-dbuser-for-login.ps1 -computer {{ ansible_hostname }} -sqlinstance {{ item.sqlinstance }} -LoginName {{ item.LoginName }} -Domain {{ item.DomainName }} -Databases {{ item.dbname | join(',') }} "
+    when: ansible_hostname == "ServerThree"
+    loop:
+      "{{ login_list }}"
+
+
