@@ -1,19 +1,19 @@
 ---
 - hosts: all
-  vars:
-    login_list:
-      - { sqlinstance: 'ServerThree', 
-          LoginName: 'winuser1', 
-          DomainName: 'SQL',
-          env: 'Prod', 
-          dbname: [ 'db1', 'db2' ]
-        }
-      - { sqlinstance: 'ServerThree', 
-          LoginName: 'winuser2', 
-          DomainName: 'SQL',
-          env: 'Prod', 
-          dbname: [ 'db1', 'db2' ]
-        }
+#  vars:
+#    login_list:
+#      - { sqlinstance: 'ServerThree', 
+#          LoginName: 'winuser1', 
+#          DomainName: 'SQL',
+#          env: 'Prod', 
+#          dbname: [ 'db1', 'db2' ]
+#        }
+#      - { sqlinstance: 'ServerThree', 
+#          LoginName: 'winuser2', 
+#          DomainName: 'SQL',
+#          env: 'Prod', 
+#          dbname: [ 'db1', 'db2' ]
+#        }
 
   tasks:
   - name: Copy file for login check
